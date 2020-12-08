@@ -66,24 +66,6 @@ int isUINT(FILE *tape){
     return FALSE;    
 }
 
-/* Octal pattern is defined as
- * REGEX: 0[0-7]+
- */
-int isOct(FILE *tape){
-   int head;
-   int zero = getc(tape);
-   if (zero == '0'){
-       if (isOctNumber(head = getc(tape))) {
-           while (isOctNumber(head = getc(tape)));
-           ungetc(head, tape);
-           return OCT;
-       }
-       ungetc(head, tape);
-   }
-   ungetc(zero, tape);
-   return FALSE;    
-}
-
 /**
  * Octal pattern is defined as 
  * REGEX: 0[0-7]+
